@@ -103,6 +103,23 @@
         a:hover {
             text-decoration: underline; /* Underline on hover */
         }
+        @media (max-width: 600px) {
+            .main-header {
+                padding: 30px 10px; /* Reduce padding on mobile */
+            }
+            h2 {
+                font-size: 1.5em; /* Adjust header size */
+            }
+            .subtitle {
+                font-size: 1em; /* Adjust subtitle size */
+            }
+            section {
+                padding: 15px; /* Adjust section padding */
+            }
+            footer {
+                font-size: 0.9em; /* Smaller footer text */
+            }
+        }
     </style>
 </head>
 <body>
@@ -204,14 +221,4 @@
     <script>
         function toggleContent(contentId) {
             const content = document.getElementById(contentId);
-            if (content.classList.contains('show')) {
-                content.classList.remove('show');
-                content.style.display = 'none'; // Set to none for better performance
-            } else {
-                content.classList.add('show');
-                content.style.display = 'block'; // Show content
-            }
-        }
-    </script>
-</body>
-</html>
+            if (content.classList.contains
