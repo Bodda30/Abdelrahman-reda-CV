@@ -13,6 +13,7 @@
             color: #4e3b31; /* Dark brown text */
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s;
         }
         .container {
             width: 90%;
@@ -26,8 +27,13 @@
             padding: 40px 20px;
             text-align: center;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .main-header:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px); /* Lift effect */
         }
         .subtitle {
             font-size: 1.2em;
@@ -38,25 +44,35 @@
             margin-bottom: 20px;
             padding: 20px;
             background: #ffffff; /* Clean white background */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             border-radius: 8px;
-            cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        section:hover {
+            transform: translateY(-4px); /* Slight lift on hover */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         h2 {
             color: #8e735b; /* Muted brown for headers */
             border-bottom: 2px solid #ddd; /* Subtle accent border */
             padding-bottom: 10px;
             margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+        h2:hover {
+            color: #6d5a47; /* Darker shade on hover */
         }
         .content {
             display: none; /* Hidden by default */
             margin-top: 10px;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         .content.show {
             display: block;
             opacity: 1;
+            transform: translateY(0);
         }
         .job h3 {
             color: #4e3b31; /* Darker shade for job titles */
@@ -70,6 +86,11 @@
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        ul li:hover {
+            background: #e5c8b0; /* Slightly darker on hover */
+            transform: scale(1.02); /* Scale effect on hover */
         }
         footer {
             background: #4e3b31; /* Dark footer */
@@ -197,20 +218,14 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>© 2024 Abdelrahman Reda | Information Systems Student</p>
+            <p>&copy; 2024 Abdelrahman Reda</p>
         </div>
     </footer>
 
     <script>
         function toggleContent(contentId) {
             const content = document.getElementById(contentId);
-            if (content.classList.contains('show')) {
-                content.classList.remove('show');
-            } else {
-                const allContents = document.querySelectorAll('.content');
-                allContents.forEach((c) => c.classList.remove('show')); // Hide all
-                content.classList.add('show');
-            }
+            content.classList.toggle('show');
         }
     </script>
 </body>
