@@ -14,6 +14,7 @@
             color: #333; /* Dark text */
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s;
         }
         .container {
             width: 80%;
@@ -22,13 +23,17 @@
             padding: 20px;
         }
         .main-header {
-            background: #ffebcd; /* Soft background color */
+            background: #f6e0b5; /* Soft background color */
             color: #333; /* Dark text */
             padding: 40px 20px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+        .main-header:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         .subtitle {
             font-size: 1.2em;
@@ -42,6 +47,11 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        section:hover {
+            transform: translateY(-2px); /* Subtle lift on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
         h2 {
             color: #ff6f61; /* Minimal color for headers */
@@ -52,6 +62,12 @@
         .content {
             display: none; /* Hidden by default */
             margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .content.show {
+            display: block;
+            opacity: 1;
         }
         .job h3 {
             color: #555; /* Darker shade for job titles */
@@ -105,7 +121,7 @@
             <h2>Profile</h2>
             <p>I am a fourth-year student at the Higher Institute of Qualitative Studies, fluent in English and equipped with technical and soft skills.</p>
             <div class="content" id="profileContent">
-                <p>I excel at managing multiple tasks and projects, adapting quickly to new challenges, and working collaboratively in team environments.</p>
+                <p>I excel at managing multiple tasks and projects, adapting quickly to new challenges, and collaborating effectively in team environments. My background in information systems enhances my problem-solving capabilities.</p>
             </div>
         </div>
     </section>
@@ -116,11 +132,11 @@
             <div id="skillsContent" class="content">
                 <ul>
                     <li>Fluent in English and Arabic</li>
-                    <li>Microsoft Office Suite</li>
-                    <li>Programming Languages & Penetration Testing</li>
-                    <li>Teamwork & Multitasking</li>
-                    <li>Adobe Creative Suite</li>
-                    <li>Digital Marketing (SEO, SEM, Analytics)</li>
+                    <li>Proficient in Microsoft Office Suite</li>
+                    <li>Programming (Python, Java, SQL) & Penetration Testing</li>
+                    <li>Strong Teamwork & Multitasking Skills</li>
+                    <li>Adobe Creative Suite (Photoshop, Illustrator)</li>
+                    <li>Digital Marketing (SEO, SEM, Google Analytics)</li>
                 </ul>
             </div>
         </div>
@@ -133,22 +149,22 @@
                 <div class="job">
                     <h3>Sales Employee - Way Hub, Nasr City (2020)</h3>
                     <ul>
-                        <li>Increased sales by 20% through customer engagement and inventory management.</li>
-                        <li>Conducted market research and collaborated with the marketing team for promotional strategies.</li>
+                        <li>Increased sales by 20% through effective customer engagement and inventory management.</li>
+                        <li>Conducted market research to inform promotional strategies in collaboration with the marketing team.</li>
                     </ul>
                 </div>
                 <div class="job">
                     <h3>Freelance Sales Agent (2022)</h3>
                     <ul>
-                        <li>Developed and executed sales strategies for multiple clients, enhancing revenue.</li>
-                        <li>Utilized SEO and digital marketing techniques for better content visibility.</li>
+                        <li>Developed and executed tailored sales strategies for diverse clients, enhancing overall revenue.</li>
+                        <li>Implemented SEO and digital marketing techniques to boost content visibility and engagement.</li>
                     </ul>
                 </div>
                 <div class="job">
                     <h3>Digital Marketing Agent - Freelancer (2023)</h3>
                     <ul>
-                        <li>Planned and implemented digital marketing campaigns across platforms.</li>
-                        <li>Analyzed campaign data and optimized results through data-driven strategies.</li>
+                        <li>Planned and implemented comprehensive digital marketing campaigns across multiple platforms.</li>
+                        <li>Analyzed campaign data and optimized performance through data-driven strategies.</li>
                     </ul>
                 </div>
             </div>
@@ -170,6 +186,8 @@
             <div id="certificationsContent" class="content">
                 <ul>
                     <li>Google Digital Marketing Certification</li>
+                    <li>Microsoft Excel Certification</li>
+                    <li>Fundamentals of Cybersecurity</li>
                 </ul>
             </div>
         </div>
@@ -184,7 +202,13 @@
     <script>
         function toggleContent(contentId) {
             const content = document.getElementById(contentId);
-            content.style.display = (content.style.display === "none" || content.style.display === "") ? "block" : "none";
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                content.style.display = 'none'; // Set to none for better performance
+            } else {
+                content.classList.add('show');
+                content.style.display = 'block'; // Show content
+            }
         }
     </script>
 </body>
